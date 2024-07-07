@@ -5,7 +5,7 @@ import CustomSwipeableDrawer from './CustomSwipeableDrawer'
 function Menu({ items }: { items: string[] }) {
   return (
     <CustomSwipeableDrawer>
-      <main>
+      <nav>
         <ul>
           {items.map((item, index) => (
             <li key={index}>
@@ -15,7 +15,7 @@ function Menu({ items }: { items: string[] }) {
             </li>
           ))}
         </ul>
-      </main>
+      </nav>
     </CustomSwipeableDrawer>
   )
 }

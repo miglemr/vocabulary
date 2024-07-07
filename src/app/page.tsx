@@ -1,30 +1,22 @@
 import Link from 'next/link'
 
-import Word from '@/components/Word'
-import Favorite from '@/components/Favorite'
-import Audio from '@/components/Audio'
+import WordCarousel from '@/components/WordCarousel'
 import Menu from '@/components/Menu'
 
-import { prisma } from '@/lib/prisma'
+import { getWords } from '@/lib/data'
 
 export default async function Home() {
   const menuItems = ['favorites', 'quizzes']
 
-  const words = await prisma.word.findFirst()
-
-  console.log(words)
+  const words = await getWords()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-evenly p-4">
-      <Word />
-      <div className="flex w-full items-center justify-evenly">
-        <Audio />
-        <Favorite />
-      </div>
-      <div className="flex w-full sm:hidden items-center justify-between">
+    <main className="flex min-h-screen sm:min-h-0 flex-col items-center justify-around p-4">
+      <WordCarousel words={words} />
+      <section className="flex w-full sm:hidden items-center justify-between">
         <Menu items={menuItems} />
-        <Link href="/preferences/levels">🔩</Link>
-      </div>
+        <Link href="/">🔩</Link>
+      </section>
     </main>
   )
 }
