@@ -3,7 +3,21 @@ import { type Word } from '@prisma/client'
 import FavoriteButton from './FavoriteButton'
 import AudioButton from './AudioButton'
 
-function Word({ word }: { word: Word }) {
+import { useWordStore } from '@/store/useWordStore'
+
+function WordItem({ word }: { word: Word }) {
+  const favoriteIds = useWordStore.use.favoriteIds()
+  const addFavorite = useWordStore.use.addFavorite()
+  const removeFavorite = useWordStore.use.removeFavorite()
+
+  if (!favoriteIds) return <div></div>
+
+  const isFavorite = favoriteIds.includes(word.id)
+
+  const toggleFavorite = () => {
+    isFavorite ? removeFavorite(word.id) : addFavorite(word.id)
+  }
+
   return (
     <div className="space-y-12">
       <div className="flex flex-col items-center">
@@ -19,9 +33,9 @@ function Word({ word }: { word: Word }) {
       </div>
       <div className="flex w-full items-center justify-evenly">
         <AudioButton url={word.audio} />
-        <FavoriteButton />
+        <FavoriteButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
       </div>
     </div>
   )
 }
-export default Word
+export default WordItem
