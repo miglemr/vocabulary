@@ -15,7 +15,7 @@ function WordChoices({
   )
 
   return (
-    <main className="grid grid-rows-2 justify-center gap-y-4">
+    <section className="grid grid-rows-2 justify-center gap-y-4">
       <button onClick={() => onChoice('favorites')} disabled={!isFavoritesAvailable}>
         <div className={favoritesClasses}>
           <p>Favorites</p>
@@ -26,7 +26,7 @@ function WordChoices({
           <p>All words</p>
         </div>
       </button>
-    </main>
+    </section>
   )
 }
 export default WordChoices

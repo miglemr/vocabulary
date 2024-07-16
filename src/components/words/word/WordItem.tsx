@@ -17,7 +17,7 @@ function WordItem({ word }: { word: Word }) {
   }
 
   return (
-    <div className="space-y-12">
+    <section className="space-y-12">
       <div className="max-w-sm h-96 space-y-20">
         <div className="flex flex-col items-center space-y-2">
           <h1 className="text-xl font-semibold">{word.word}</h1>
@@ -33,7 +33,7 @@ function WordItem({ word }: { word: Word }) {
         <AudioButton url={word.audio} />
         <FavoriteButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} />
       </div>
-    </div>
+    </section>
   )
 }
 export default WordItem

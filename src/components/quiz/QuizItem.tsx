@@ -23,7 +23,7 @@ function QuizItem({ quiz }: { quiz: Quiz }) {
   }
 
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       <p className="text-center">{quiz.question}</p>
       <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10">
         {quiz.options.map((option, index) => (
@@ -39,7 +39,7 @@ function QuizItem({ quiz }: { quiz: Quiz }) {
           </button>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

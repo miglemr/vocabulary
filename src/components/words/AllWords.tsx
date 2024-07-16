@@ -5,6 +5,7 @@ import { type Word } from '@prisma/client'
 import { useWordStore } from '@/store/useWordStore'
 
 import WordCarousel from './WordCarousel'
+import LoadingSpinner from '../LoadingSpinner'
 
 function AllWords({ words }: { words: Word[] }) {
   const hasHydrated = useWordStore.use._hasHydrated()
@@ -15,7 +16,7 @@ function AllWords({ words }: { words: Word[] }) {
     setCurrentWordIndex(index)
   }
 
-  if (!hasHydrated) return <div>Loading...</div>
+  if (!hasHydrated) return <LoadingSpinner />
 
   return (
     <WordCarousel words={words} initialIndex={currentWordIndex} onIndexChange={handleIndexChange} />

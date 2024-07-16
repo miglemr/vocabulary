@@ -11,9 +11,9 @@ const quizList = [
   },
 ]
 
-function Quizzes() {
+function Quiz() {
   return (
-    <main className="flex flex-col items-center justify-around mt-28 p-4 space-y-4">
+    <section className="flex flex-col items-center">
       <header>
         <h1>Quiz</h1>
       </header>
@@ -28,8 +28,8 @@ function Quizzes() {
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   )
 }
 
-export default Quizzes
+export default Quiz

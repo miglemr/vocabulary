@@ -1,5 +1,6 @@
 'use client'
 
+import LoadingSpinner from '@/components/LoadingSpinner'
 import FavoriteWords from '@/components/words/FavoriteWords'
 
 import { useFetchFavoriteWords } from '@/hooks/useFetchFavoriteWords'
@@ -12,7 +13,7 @@ function Favorites() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <LoadingSpinner />
   }
 
   if (favoriteWords.length === 0) {

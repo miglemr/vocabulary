@@ -39,15 +39,13 @@ function QuizController({
   if (!quiz) return <div></div>
 
   return (
-    <div>
-      <div className="flex flex-col items-center">
-        <main className="flex flex-col items-center space-y-12">
-          <QuizItem quiz={quiz} />
-          <button onClick={handleNext} className="w-fit border-2 rounded-md px-2">
-            Next
-          </button>
-        </main>
-      </div>
+    <div className="flex flex-col items-center">
+      <main className="flex flex-col items-center space-y-12">
+        <QuizItem quiz={quiz} />
+        <button onClick={handleNext} className="w-fit border-2 rounded-md px-2">
+          Next
+        </button>
+      </main>
     </div>
   )
 }
