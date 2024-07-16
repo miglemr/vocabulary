@@ -8,6 +8,7 @@ import { WORDS_API_BASE_URL } from '@/lib/config'
 export function useFetchFavoriteWords() {
   const [favoriteWords, setfavoriteWords] = useState<Word[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const hasHydrated = useWordStore.use._hasHydrated()
   const favoriteIds = useWordStore.use.favoriteIds()
@@ -27,7 +28,10 @@ export function useFetchFavoriteWords() {
           initialWords.current = data
           setIsLoading(false)
         })
-        .catch(err => console.log(err))
+        .catch(error => {
+          console.error(error)
+          setError('Failed to fetch favorites')
+        })
     } else {
       setfavoriteWords(prevWords => prevWords.filter(word => favoriteIds.includes(word.id)))
     }
@@ -36,5 +40,6 @@ export function useFetchFavoriteWords() {
   return {
     favoriteWords,
     isLoading,
+    error,
   }
 }

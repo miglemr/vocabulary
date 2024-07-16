@@ -5,18 +5,20 @@ import FavoriteWords from '@/components/words/FavoriteWords'
 import { useFetchFavoriteWords } from '@/hooks/useFetchFavoriteWords'
 
 function Favorites() {
-  const { favoriteWords, isLoading } = useFetchFavoriteWords()
+  const { favoriteWords, isLoading, error } = useFetchFavoriteWords()
 
-  return (
-    <main className="flex min-h-screen sm:min-h-0 flex-col items-center justify-around p-4">
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : favoriteWords.length !== 0 ? (
-        <FavoriteWords words={favoriteWords} />
-      ) : (
-        <p>No favorite words</p>
-      )}
-    </main>
-  )
+  if (error) {
+    return <p>{error}</p>
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (favoriteWords.length === 0) {
+    return <p>No favorite words</p>
+  }
+
+  return <FavoriteWords words={favoriteWords} />
 }
 export default Favorites

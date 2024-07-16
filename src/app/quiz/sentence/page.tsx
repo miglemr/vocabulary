@@ -15,6 +15,15 @@ const quizDetails = {
 async function SentenceQuizPage() {
   const words = await getWords()
 
+  if (words === null) {
+    return (
+      <main className="p-2 space-y-20">
+        <Link href="/quiz">Back to quiz page</Link>
+        <p>Failed to fetch words. Please try again later.</p>
+      </main>
+    )
+  }
+
   return (
     <main className="p-2 space-y-20">
       <Link href="/quiz">Back to quiz page</Link>

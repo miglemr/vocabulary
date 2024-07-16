@@ -34,7 +34,7 @@ export default function RootLayout({
         <div className="hidden sm:block">
           <Navbar items={navItems} />
         </div>
-        {children}
+        <main className="flex justify-center mt-14 p-2">{children}</main>
         <div className="fixed sm:hidden bottom-0 left-0 right-0 flex w-full items-center justify-between bg-white p-4">
           <Menu items={navItems} />
         </div>
