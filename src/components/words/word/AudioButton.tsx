@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
+
 function AudioButton({ url }: { url: string }) {
   const throttledStart = _.throttle(() => {
     const audio = new Audio(url)
@@ -7,9 +9,9 @@ function AudioButton({ url }: { url: string }) {
   }, 1000)
 
   return (
-    <div>
-      <button onClick={throttledStart}>🔉</button>
-    </div>
+    <button onClick={throttledStart}>
+      <VolumeUpRoundedIcon />
+    </button>
   )
 }
 export default AudioButton

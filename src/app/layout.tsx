@@ -30,12 +30,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} min-h-screen overflow-hidden`}>
         <div className="hidden sm:block">
           <Navbar items={navItems} />
         </div>
-        <main className="flex justify-center mt-14 p-2">{children}</main>
-        <div className="fixed sm:hidden bottom-0 left-0 right-0 flex w-full items-center justify-between bg-white p-4">
+        <main className="flex justify-center items-center">
+          <div>{children}</div>
+        </main>
+        <div className="fixed sm:hidden bottom-0 left-0 right-0 p-4">
           <Menu items={navItems} />
         </div>
       </body>

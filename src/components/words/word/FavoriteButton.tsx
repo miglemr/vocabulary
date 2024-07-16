@@ -1,3 +1,6 @@
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded'
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'
+
 function Favorite({
   isFavorite,
   toggleFavorite,
@@ -6,9 +9,9 @@ function Favorite({
   toggleFavorite: () => void
 }) {
   return (
-    <div>
-      <button onClick={toggleFavorite}>{isFavorite ? <p>💗</p> : <p>💟</p>}</button>
-    </div>
+    <button onClick={toggleFavorite}>
+      {isFavorite ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+    </button>
   )
 }
 

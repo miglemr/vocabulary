@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
 
 import { type Word } from '@prisma/client'
 
@@ -16,7 +18,7 @@ function WordCarousel({
   initialIndex?: number
   onIndexChange?: (index: number) => void
 }) {
-  const { currentWord, handlers, index, setIndex, position } = useWordCarousel(words, initialIndex)
+  const { currentWord, handlers, index, setIndex } = useWordCarousel(words, initialIndex)
 
   useEffect(() => {
     if (onIndexChange) {
@@ -27,16 +29,17 @@ function WordCarousel({
   return (
     <div
       {...handlers}
-      className="space-y-12"
-      style={{ transform: `translateY(${position}px)`, transition: 'transform 0.3s ease' }}
+      className="flex justify-center items-center h-screen sm:space-x-10 md:space-x-20"
     >
-      <WordItem word={currentWord} />
-      <div className="hidden sm:flex justify-between">
+      <div className="hidden sm:block">
         <button onClick={() => setIndex(prevIndex => getPrevIndex(prevIndex, words.length))}>
-          Prev
+          <ArrowBackIosNewRoundedIcon color="disabled" />
         </button>
+      </div>
+      <WordItem word={currentWord} />
+      <div className="hidden sm:block">
         <button onClick={() => setIndex(prevIndex => getNextIndex(prevIndex, words.length))}>
-          Next
+          <ArrowForwardIosRoundedIcon color="disabled" />
         </button>
       </div>
     </div>
