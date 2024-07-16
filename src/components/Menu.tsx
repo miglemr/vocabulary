@@ -2,16 +2,16 @@ import Link from 'next/link'
 
 import CustomSwipeableDrawer from './CustomSwipeableDrawer'
 
-function Menu({ items }: { items: string[] }) {
+import { NavItem } from '@/app/layout'
+
+function Menu({ items }: { items: NavItem[] }) {
   return (
     <CustomSwipeableDrawer>
       <nav>
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              <Link href={`/${item}`} className="text-transform: capitalize">
-                {item}
-              </Link>
+              <Link href={item.link}>{item.title}</Link>
             </li>
           ))}
         </ul>

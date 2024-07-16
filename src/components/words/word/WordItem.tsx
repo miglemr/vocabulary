@@ -10,8 +10,6 @@ function WordItem({ word }: { word: Word }) {
   const addFavorite = useWordStore.use.addFavorite()
   const removeFavorite = useWordStore.use.removeFavorite()
 
-  if (!favoriteIds) return <div></div>
-
   const isFavorite = favoriteIds.includes(word.id)
 
   const toggleFavorite = () => {

@@ -24,7 +24,7 @@ function FavoriteWords({ words }: { words: Word[] }) {
       className="space-y-12 flex-grow pt-24"
       style={{ transform: `translateY(${position}px)`, transition: 'transform 0.3s ease' }}
     >
-      {currentWord && <WordItem word={currentWord} />}
+      <WordItem word={currentWord} />
       <div className="hidden sm:flex justify-between">
         <button
           onClick={() => setIndex(prevIndex => (prevIndex - 1 + words.length) % words.length)}

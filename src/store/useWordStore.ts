@@ -6,11 +6,13 @@ import { createSelectors } from '@/utils/createSelectors'
 const STORAGE_KEY = 'Words'
 
 export type WordState = {
-  currentWordIndex: number | undefined
-  favoriteIds: number[] | undefined
+  _hasHydrated: boolean
+  currentWordIndex: number
+  favoriteIds: number[]
 }
 
 type WordActions = {
+  setHasHydrated: (state: boolean) => void
   addFavorite: (id: number) => void
   removeFavorite: (id: number) => void
   setCurrentWordIndex: (id: number) => void
@@ -23,8 +25,14 @@ export const useWordStore = createSelectors(
     devtools(
       persist(
         set => ({
-          currentWordIndex: undefined,
-          favoriteIds: undefined,
+          _hasHydrated: false,
+          currentWordIndex: 0,
+          favoriteIds: [],
+          setHasHydrated: state => {
+            set({
+              _hasHydrated: state,
+            })
+          },
           addFavorite: (id: number) =>
             set(state => ({
               favoriteIds: state.favoriteIds ? [...state.favoriteIds, id] : [id],
@@ -42,6 +50,9 @@ export const useWordStore = createSelectors(
         }),
         {
           name: STORAGE_KEY,
+          onRehydrateStorage: () => state => {
+            state?.setHasHydrated(true)
+          },
         },
       ),
     ),

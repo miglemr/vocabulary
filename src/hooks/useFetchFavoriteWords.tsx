@@ -3,38 +3,38 @@ import { useState, useEffect, useRef } from 'react'
 import { Word } from '@prisma/client'
 
 import { useWordStore } from '@/store/useWordStore'
+import { WORDS_API_BASE_URL } from '@/lib/config'
 
-const WORDS_API_BASE_URL = '/api/words'
-
-function useFavoriteWords() {
-  const [words, setWords] = useState<Word[]>([])
+export function useFetchFavoriteWords() {
+  const [favoriteWords, setfavoriteWords] = useState<Word[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  const hasHydrated = useWordStore.use._hasHydrated()
+  const favoriteIds = useWordStore.use.favoriteIds()
 
   const initialWords = useRef([])
 
-  const favoriteIds = useWordStore.use.favoriteIds()
-
   useEffect(() => {
-    if (!favoriteIds) return
+    if (!hasHydrated) return
+
+    const url = WORDS_API_BASE_URL + `?id=${favoriteIds.join(',')}`
 
     if (initialWords.current.length === 0) {
-      fetch(WORDS_API_BASE_URL + `?id=${favoriteIds.join(',')}`)
+      fetch(url)
         .then(res => res.json())
         .then(data => {
-          setWords(data)
+          setfavoriteWords(data)
           initialWords.current = data
           setIsLoading(false)
         })
         .catch(err => console.log(err))
     } else {
-      setWords(prevWords => prevWords.filter(word => favoriteIds.includes(word.id)))
-      setIsLoading(false)
+      setfavoriteWords(prevWords => prevWords.filter(word => favoriteIds.includes(word.id)))
     }
-  }, [favoriteIds])
+  }, [favoriteIds, hasHydrated])
 
   return {
-    words,
+    favoriteWords,
     isLoading,
   }
 }
-export default useFavoriteWords

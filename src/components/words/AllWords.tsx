@@ -9,31 +9,32 @@ import WordItem from './word/WordItem'
 import { useWordStore } from '@/store/useWordStore'
 import { useWordCarousel } from '@/hooks/useWordCarousel'
 
-function Words({ words }: { words: Word[] }) {
+function AllWords({ words }: { words: Word[] }) {
+  const hasHydrated = useWordStore.use._hasHydrated()
   const currentWordIndex = useWordStore.use.currentWordIndex()
   const setCurrentWordIndex = useWordStore.use.setCurrentWordIndex()
-
-  const isInitialRender = useRef(true)
 
   const { currentWord, handlers, index, setIndex, position } = useWordCarousel(
     words,
     currentWordIndex,
   )
 
-  useEffect(() => {
-    if (currentWordIndex !== undefined && isInitialRender.current) {
-      setIndex(currentWordIndex)
-      isInitialRender.current = false
-    }
-  }, [currentWordIndex, setIndex])
+  const initialValueSet = useRef(false)
 
   useEffect(() => {
-    if (!isInitialRender.current) {
+    if (hasHydrated && !initialValueSet.current) {
+      setIndex(currentWordIndex)
+      initialValueSet.current = true
+    }
+  }, [currentWordIndex, setIndex, hasHydrated])
+
+  useEffect(() => {
+    if (hasHydrated && currentWordIndex !== index) {
       setCurrentWordIndex(index)
     }
-  }, [index, currentWordIndex, setCurrentWordIndex])
+  }, [index, currentWordIndex, setCurrentWordIndex, hasHydrated])
 
-  if (currentWordIndex === undefined) return <div>Loading</div>
+  if (!hasHydrated) return <div>Loading...</div>
 
   return (
     <div
@@ -54,4 +55,4 @@ function Words({ words }: { words: Word[] }) {
   )
 }
 
-export default Words
+export default AllWords
