@@ -10,7 +10,7 @@ export function useWordCarousel(words: Word[], initialIndex: number) {
 
   const currentWord = words[index]
 
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
 
   if (!currentWord) {
     setIndex(prevIndex => getNextIndex(prevIndex, words.length))

@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 
 import Navbar from '@/components/Navbar'
-import Menu from '@/components/Menu'
+import Menu from '@/components/menu/Menu'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 export type NavItem = {
   title: string
   link: string
+  imgSrc: string
 }
 
 export default function RootLayout({
@@ -23,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const navItems: NavItem[] = [
-    { title: 'All', link: '/' },
-    { title: 'Favorites', link: '/favorites' },
-    { title: 'Quiz', link: '/quiz' },
+    { title: 'All', link: '/', imgSrc: '/alphabet.png' },
+    { title: 'Favorites', link: '/favorites', imgSrc: '/favorite.png' },
+    { title: 'Quiz', link: '/quiz', imgSrc: '/quiz.png' },
   ]
 
   return (
