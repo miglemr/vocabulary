@@ -1,6 +1,4 @@
-import Link from 'next/link'
-
-import QuizSetup from '@/components/quiz/QuizSetup'
+import Quiz from '@/components/quiz/Quiz'
 
 import { getWords } from '@/lib/data'
 import { createSentenceQuiz } from '@/lib/createQuiz'
@@ -16,19 +14,9 @@ async function SentenceQuizPage() {
   const words = await getWords()
 
   if (words === null) {
-    return (
-      <main className="p-2 space-y-20">
-        <Link href="/quiz">Back to quiz page</Link>
-        <p>Failed to fetch words. Please try again later.</p>
-      </main>
-    )
+    return <h1>Failed to fetch words. Please try again later.</h1>
   }
 
-  return (
-    <main className="p-2 space-y-20">
-      <Link href="/quiz">Back to quiz page</Link>
-      <QuizSetup words={words} quizDetails={quizDetails} />
-    </main>
-  )
+  return <Quiz words={words} quizDetails={quizDetails} />
 }
 export default SentenceQuizPage

@@ -5,7 +5,7 @@ import { type Word } from '@prisma/client'
 import { useWordStore } from '@/store/useWordStore'
 
 import WordCarousel from './WordCarousel'
-import LoadingSpinner from '../LoadingSpinner'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 function AllWords({ words }: { words: Word[] }) {
   const hasHydrated = useWordStore.use._hasHydrated()

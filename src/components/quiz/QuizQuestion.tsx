@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { type Quiz } from '@/lib/createQuiz'
+import { type QuizType } from '@/lib/createQuiz'
 
-function QuizItem({ quiz }: { quiz: Quiz }) {
+function QuizQuestion({ quiz }: { quiz: QuizType }) {
   const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
   useEffect(() => {
@@ -13,8 +13,8 @@ function QuizItem({ quiz }: { quiz: Quiz }) {
   const getOptionButtonClasses = (option: string) => {
     const isCorrect = option === quiz.answer
 
-    return classNames('border-2 rounded-xl p-2', {
-      'hover:border-sky-300': !answerSubmitted,
+    return classNames('border-4 rounded-xl p-2 shadow-sm', {
+      'hover:border-violet-300 transition-all duration-200': !answerSubmitted,
       'border-green-300': answerSubmitted && isCorrect,
       'border-red-300': answerSubmitted && !isCorrect,
       'cursor-auto': answerSubmitted,
@@ -23,9 +23,9 @@ function QuizItem({ quiz }: { quiz: Quiz }) {
   }
 
   return (
-    <section className="flex flex-col">
-      <p className="text-center">{quiz.question}</p>
-      <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10">
+    <div className="flex flex-col">
+      <p className="text-center font-semibold">{quiz.question}</p>
+      <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10 text-sm sm:text">
         {quiz.options.map((option, index) => (
           <button
             key={index}
@@ -39,8 +39,8 @@ function QuizItem({ quiz }: { quiz: Quiz }) {
           </button>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
 
-export default QuizItem
+export default QuizQuestion

@@ -3,8 +3,9 @@ import _ from 'lodash'
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded'
 
 function AudioButton({ url }: { url: string }) {
+  const audio = new Audio(url)
+
   const throttledStart = _.throttle(() => {
-    const audio = new Audio(url)
     audio.play()
   }, 1000)
 

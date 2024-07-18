@@ -11,25 +11,29 @@ const quizList = [
   },
 ]
 
-function Quiz() {
+function QuizPage() {
   return (
-    <section className="flex flex-col items-center">
-      <header>
-        <h1>Quiz</h1>
+    <div className="flex flex-col items-center space-y-6">
+      <header className="flex flex-col items-center space-y-10">
+        <p className="text-sm text-center max-w-md">
+          Put your word knowledge to the test and sharpen your vocabulary skills! Practice your
+          favorite words or discover new ones to expand your vocabulary.
+        </p>
+        <h1>Select quiz</h1>
       </header>
       <ul className="sm:grid grid-cols-2 gap-16">
         {quizList.map((quiz, index) => (
           <li key={index}>
             <Link href={'/quiz' + quiz.link}>
-              <div className="border-2 rounded-xl my-4 p-2 sm:p-4 hover:border-sky-400">
+              <div className="border-2 border-transparent bg-violet-300/60 rounded-xl my-4 p-2 sm:p-4 hover:border-violet-300 transition-all duration-300">
                 <h1 className="text-center">{quiz.title}</h1>
               </div>
             </Link>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   )
 }
 
-export default Quiz
+export default QuizPage

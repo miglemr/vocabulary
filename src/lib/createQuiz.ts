@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { Word } from '@prisma/client'
 
-export type Quiz = {
+export type QuizType = {
   question: string
   answer: string
   options: string[]
@@ -19,7 +19,7 @@ const getQuizOptions = (correctWord: Word, allWords: Word[], partOfSpeech: strin
   return _.shuffle([correctWord.word, ..._.sampleSize(filteredWords, 3)])
 }
 
-export const createDefinitionQuiz = (correctWord: Word, allWords: Word[]): Quiz => {
+export const createDefinitionQuiz = (correctWord: Word, allWords: Word[]): QuizType => {
   const { partOfSpeech } = correctWord
 
   const options = getQuizOptions(correctWord, allWords, partOfSpeech)
@@ -32,7 +32,7 @@ export const createDefinitionQuiz = (correctWord: Word, allWords: Word[]): Quiz 
   }
 }
 
-export const createSentenceQuiz = (correctWord: Word, allWords: Word[]): Quiz => {
+export const createSentenceQuiz = (correctWord: Word, allWords: Word[]): QuizType => {
   const { partOfSpeech } = correctWord
 
   const options = getQuizOptions(correctWord, allWords, partOfSpeech)
