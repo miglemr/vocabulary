@@ -10,7 +10,7 @@ function AudioButton({ url }: { url: string }) {
   }, 1000)
 
   return (
-    <button onClick={throttledStart}>
+    <button aria-label="audio-button" onClick={throttledStart}>
       <VolumeUpRoundedIcon />
     </button>
   )

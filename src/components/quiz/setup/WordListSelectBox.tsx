@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import { forwardRef } from 'react'
 
-const WordChoiceBox = forwardRef<
+const WordSelectBox = forwardRef<
   HTMLDivElement,
   { name: string; imgSrc: string; isDisabled: boolean; clicked: boolean }
 >(({ name, imgSrc, isDisabled, clicked, ...rest }, ref) => {
@@ -19,13 +19,13 @@ const WordChoiceBox = forwardRef<
   return (
     <span {...rest} ref={ref} className="flex flex-col w-32 h-32 hover:cursor-pointer">
       <button disabled={isDisabled} className={buttonClasses}>
-        <span>{name}</span>
+        <span className="capitalize">{name}</span>
         <Image src={imgSrc} alt={name} height={60} width={60} unoptimized={true} />
       </button>
     </span>
   )
 })
 
-WordChoiceBox.displayName = 'WordChoiceBox'
+WordSelectBox.displayName = 'WordSelectBox'
 
-export default WordChoiceBox
+export default WordSelectBox

@@ -9,7 +9,7 @@ function Favorite({
   toggleFavorite: () => void
 }) {
   return (
-    <button onClick={toggleFavorite}>
+    <button aria-label="favorite-button" onClick={toggleFavorite}>
       {isFavorite ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
     </button>
   )

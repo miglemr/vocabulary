@@ -4,7 +4,7 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 
 import { type Word } from '@prisma/client'
 
-import WordItem from './word/WordItem'
+import WordItem from './wordItem/WordItem'
 
 import { useWordCarousel } from '@/hooks/useWordCarousel'
 import { getPrevIndex, getNextIndex } from '@/utils/utils'
@@ -32,13 +32,19 @@ function WordCarousel({
       className="flex justify-center items-center h-screen sm:space-x-10 md:space-x-20"
     >
       <div className="hidden sm:block">
-        <button onClick={() => setIndex(prevIndex => getPrevIndex(prevIndex, words.length))}>
+        <button
+          aria-label="prev-button"
+          onClick={() => setIndex(prevIndex => getPrevIndex(prevIndex, words.length))}
+        >
           <ArrowBackIosNewRoundedIcon color="disabled" />
         </button>
       </div>
       <WordItem word={currentWord} />
       <div className="hidden sm:block">
-        <button onClick={() => setIndex(prevIndex => getNextIndex(prevIndex, words.length))}>
+        <button
+          aria-label="next-button"
+          onClick={() => setIndex(prevIndex => getNextIndex(prevIndex, words.length))}
+        >
           <ArrowForwardIosRoundedIcon color="disabled" />
         </button>
       </div>

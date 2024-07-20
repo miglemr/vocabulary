@@ -24,10 +24,13 @@ function QuizQuestion({ quiz }: { quiz: QuizType }) {
 
   return (
     <div className="flex flex-col">
-      <p className="text-center font-semibold">{quiz.question}</p>
+      <p aria-label="quiz-question" className="text-center font-semibold">
+        {quiz.question}
+      </p>
       <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10 text-sm sm:text">
         {quiz.options.map((option, index) => (
           <button
+            aria-label="quiz-option"
             key={index}
             className={getOptionButtonClasses(option)}
             value={option}

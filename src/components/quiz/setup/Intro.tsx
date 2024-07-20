@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Button from '@/components/Button'
-import BackButton from '@/components/BackButton'
+import BackIcon from '@/components/BackIcon'
 
 function Intro({
   title,
@@ -15,8 +15,8 @@ function Intro({
   return (
     <div>
       <div className="mb-6">
-        <Link href="/quiz">
-          <BackButton />
+        <Link aria-label="back-link" href="/quiz">
+          <BackIcon />
         </Link>
       </div>
       <div className="flex flex-col items-center justify-center space-y-12 max-w-96">
