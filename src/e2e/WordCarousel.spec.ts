@@ -74,6 +74,6 @@ test.describe('word carousel favorite button', () => {
     await page.getByLabel('favorite-button').click()
     await page.goto('/favorites')
 
-    await expect(page.getByRole('paragraph')).toHaveText('No favorite words')
+    await expect(page.getByRole('heading')).toHaveText('Favorite words collection is empty')
   })
 })
