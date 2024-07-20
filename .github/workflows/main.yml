@@ -31,6 +31,8 @@ jobs:
         run: npm run lint
 
       - name: Install Playwright Browsers
+        env:
+          DATABASE_URL: 'file:./test.db'
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
