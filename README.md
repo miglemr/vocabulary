@@ -12,6 +12,10 @@ Welcome to Vocabulary, your ultimate companion for mastering English words effor
 
 - **Quizzes**: Test your knowledge with fun and challenging quizzes. You can quiz yourself on your saved words or on the entire word collection to keep your skills sharp.
 
+<br>
+
+<div align="center"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2tuZmJjd2x5eG11aGdqeW40bmp5aWNqdHN1ZGdpa3huOGE4cDBtMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8jGHJ7IFhyqMaFr5g9/giphy.gif"/></div>
+
 ## Built With
 
 <code><img width="50" src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704" alt="Next.js" title="Next.js"/></code>
