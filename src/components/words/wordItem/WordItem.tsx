@@ -23,11 +23,11 @@ function WordItem({ word }: { word: Word }) {
           <h1 className="text-xl font-semibold">{word.word}</h1>
           <p>{word.pronunciation}</p>
         </div>
-        <p className="text-center">
+        <p className="text-center text-sm">
           <span className="mr-2">({word.partOfSpeech})</span>
           {word.definition}
         </p>
-        <p className="text-center text-sm">({word.example})</p>
+        <p className="text-center text-xs sm:text-sm">({word.example})</p>
       </div>
       <div className="flex w-full items-center justify-evenly">
         <AudioButton url={word.audio} />

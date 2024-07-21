@@ -20,13 +20,13 @@ function Favorites() {
 
   if (favoriteWords.length === 0) {
     return (
-      <div className="flex flex-col items-center space-y-8 mt-16">
+      <div className="flex flex-col justify-center min-h-screen items-center space-y-8">
         <h2>Favorite words collection is empty</h2>
         <Image
           src="/empty-folder.png"
           alt="empty-folder-image"
-          height={200}
-          width={200}
+          height={100}
+          width={100}
           unoptimized={true}
         />
       </div>

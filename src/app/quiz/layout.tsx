@@ -4,7 +4,7 @@ export default function QuizLayout({
   children: React.ReactNode
 }>) {
   return (
-    <main className="flex flex-col items-center justify-center sm:justify-start sm:mt-14 h-screen p-2">
+    <main className="flex flex-col items-center justify-center h-screen w-screen p-2 sm:pb-28">
       {children}
     </main>
   )

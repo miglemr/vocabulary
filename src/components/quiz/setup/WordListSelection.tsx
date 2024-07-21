@@ -27,9 +27,9 @@ function WordListSelection({
       <button aria-label="back-button" onClick={onCancel} className="mb-6">
         <BackIcon />
       </button>
-      <div className="flex flex-col items-center space-y-10">
+      <div className="flex flex-col items-center space-y-8">
         <header>
-          <h1 className="text-center">Select the word list for your quiz</h1>
+          <h1 className="text-center text-sm">Select the word list you want to be quizzed on</h1>
         </header>
         <div className="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 sm:space-x-6 gap-y-4">
           <span onClick={() => handleClick('all')}>

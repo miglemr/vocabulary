@@ -14,7 +14,7 @@ function QuizQuestion({ quiz }: { quiz: QuizType }) {
     const isCorrect = option === quiz.answer
 
     return classNames('border-4 rounded-xl p-2 shadow-sm', {
-      'hover:border-violet-300 transition-all duration-200': !answerSubmitted,
+      'hover:border-dark-pink transition-all duration-200': !answerSubmitted,
       'border-green-300': answerSubmitted && isCorrect,
       'border-red-300': answerSubmitted && !isCorrect,
       'cursor-auto': answerSubmitted,
@@ -27,7 +27,7 @@ function QuizQuestion({ quiz }: { quiz: QuizType }) {
       <p aria-label="quiz-question" className="text-center font-semibold">
         {quiz.question}
       </p>
-      <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10 text-sm sm:text">
+      <div className="grid grid-cols-2 gap-4 gap-y-4 mt-10 text-sm">
         {quiz.options.map((option, index) => (
           <button
             aria-label="quiz-option"

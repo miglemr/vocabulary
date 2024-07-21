@@ -29,7 +29,7 @@ function WordCarousel({
   return (
     <div
       {...handlers}
-      className="flex justify-center items-center h-screen sm:space-x-10 md:space-x-20"
+      className="flex justify-center items-center h-screen sm:space-x-10 md:space-x-20 p-2 sm:p-0"
     >
       <div className="hidden sm:block">
         <button

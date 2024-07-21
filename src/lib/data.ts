@@ -3,9 +3,6 @@ import { prisma } from '@/lib/prisma'
 export const getWords = async () => {
   try {
     const words = await prisma.word.findMany({
-      where: {
-        difficulty: 'advanced',
-      },
       orderBy: {
         id: 'asc',
       },
