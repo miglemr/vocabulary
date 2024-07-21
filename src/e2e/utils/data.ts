@@ -6,19 +6,20 @@ export const wordDefinitionQuizDetails = {
 
 export const wordOrder = {
   firstWord: {
-    word: 'abstruse',
-    definition: 'difficult to understand; obscure',
+    word: 'ephemeral',
+    definition: 'lasting for a very short time',
     partOfSpeech: 'adj.',
-    pronunciation: '/æbˈstruːs/',
-    example:
-      "The professor's lecture was so abstruse that many students struggled to follow along.",
+    pronunciation: '/ɪˈfɛmərəl/',
+    example: 'The beauty of the sunset was ephemeral, disappearing as quickly as it arrived.',
+    difficulty: 'intermediate',
   },
   secondWord: {
-    word: 'cacophony',
-    definition: 'a harsh, discordant mixture of sounds',
-    partOfSpeech: 'noun',
-    pronunciation: '/kæˈkɑːfəni/',
-    example: 'The city street was filled with the cacophony of car horns and shouting vendors.',
+    word: 'ambiguous',
+    definition: 'open to more than one interpretation',
+    partOfSpeech: 'adj.',
+    pronunciation: '/æmˈbɪɡjuəs/',
+    example: 'The instructions were ambiguous and led to confusion.',
+    difficulty: 'intermediate',
   },
   lastWord: {
     word: 'quintessence',

@@ -40,7 +40,9 @@ test.describe('quiz intro', () => {
 
     await page.getByRole('button', { name: 'Next' }).click()
 
-    await expect(page.getByRole('heading')).toHaveText('Select the word list for your quiz')
+    await expect(page.getByRole('heading')).toHaveText(
+      'Select the word list you want to be quizzed on',
+    )
   })
 })
 
