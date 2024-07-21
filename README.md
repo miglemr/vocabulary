@@ -28,6 +28,8 @@ Welcome to Vocabulary, your ultimate companion for mastering English words effor
 npm install
 ```
 
+- Add environment variables as in .env.example file
+
 - Setup Prisma database
 
 ```bash
