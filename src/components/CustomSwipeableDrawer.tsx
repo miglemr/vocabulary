@@ -37,6 +37,7 @@ function CustomSwipeableDrawer({
           sx: {
             borderTopLeftRadius: '8px',
             borderTopRightRadius: '8px',
+            backgroundColor: '#F7F7F6',
           },
         }}
       >

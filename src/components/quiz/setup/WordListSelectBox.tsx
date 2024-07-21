@@ -10,7 +10,7 @@ const WordSelectBox = forwardRef<
   const buttonClasses = classNames(
     'flex flex-col justify-evenly items-center w-full h-full border-4 rounded-md',
     {
-      'bg-stone-100': isDisabled,
+      'bg-stone-200': isDisabled,
       'border-green-300': !isDisabled && clicked,
       'border-stone-200': !clicked,
     },

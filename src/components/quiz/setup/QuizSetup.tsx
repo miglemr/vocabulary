@@ -29,6 +29,7 @@ function QuizSetup({
 
   const handleWordSelectionCancel = () => {
     setIsWordSelectionVisible(false)
+    setSelectedWordList(null)
     setIsIntroVisible(true)
   }
 

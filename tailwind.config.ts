@@ -9,9 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'light-green': '#BED1CF',
-        'light-pink': '#F1DDE2',
-        'dark-pink': '#F0D5DC',
+        'light-yellow': '#F7F7F6',
+        'light-green': '#B5D1CF',
+        'light-pink': '#E7CCD2',
+        'dark-pink': '#D1B6BC',
       },
     },
   },

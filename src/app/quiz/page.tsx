@@ -26,7 +26,7 @@ function QuizPage() {
           <li key={index}>
             <Link href={'/quiz' + quiz.link}>
               <div className="border-2 border-transparent bg-light-pink rounded-xl my-4 p-2 sm:p-4 hover:border-dark-pink shadow-md transition-all duration-300">
-                <p className="text-center text-sm">{quiz.title}</p>
+                <p className="text-center text-xs font-semibold">{quiz.title}</p>
               </div>
             </Link>
           </li>

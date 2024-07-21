@@ -31,8 +31,8 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen overflow-hidden`}>
-        <div className="hidden sm:block bg-light-green shadow-sm">
+      <body className={`${inter.className} min-h-screen overflow-hidden bg-light-yellow`}>
+        <div className="hidden sm:block">
           <Navbar items={navItems} />
         </div>
         <main className="flex justify-center items-center">{children}</main>

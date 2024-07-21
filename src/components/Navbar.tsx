@@ -4,8 +4,8 @@ import { NavItem } from '@/app/layout'
 
 function Navbar({ items }: { items: NavItem[] }) {
   return (
-    <nav className="flex justify-between items-center h-10 px-4">
-      <ul className="flex space-x-4 font-semibold text-sm">
+    <nav className="flex justify-between items-center h-10 px-4 m-4">
+      <ul className="flex space-x-8 font-semibold text-sm">
         {items.map((item, index) => (
           <li key={index}>
             <Link href={item.link}>{item.title}</Link>
