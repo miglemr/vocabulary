@@ -19,6 +19,17 @@ const getQuizOptions = (correctWord: Word, allWords: Word[], partOfSpeech: strin
   return _.shuffle([correctWord.word, ..._.sampleSize(filteredWords, 3)])
 }
 
+export const getCorrectWord = (wordList: Word[], prevWord: string): Word | undefined => {
+  const correctWord = _.sample(wordList)
+
+  // a check to avoid rendering quiz question twice in a row
+  if (correctWord?.word === prevWord) {
+    return getCorrectWord(wordList, prevWord)
+  }
+
+  return correctWord
+}
+
 export const createDefinitionQuiz = (correctWord: Word, allWords: Word[]): QuizType => {
   const { partOfSpeech } = correctWord
 

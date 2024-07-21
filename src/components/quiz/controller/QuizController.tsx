@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import _ from 'lodash'
 
 import { Word } from '@prisma/client'
@@ -6,7 +6,7 @@ import { Word } from '@prisma/client'
 import QuizQuestion from './QuizQuestion'
 import Button from '@/components/Button'
 
-import { type QuizType } from '@/lib/createQuiz'
+import { getCorrectWord, type QuizType } from '@/lib/createQuiz'
 
 function QuizController({
   allWords,
@@ -19,17 +19,22 @@ function QuizController({
 }) {
   const [quiz, setQuiz] = useState<QuizType>()
 
+  const prevQuizWord = useRef('')
+
   const startNewQuiz = useCallback(() => {
     let newQuiz
 
-    const correctWord = quizQuestionWords ? _.sample(quizQuestionWords) : _.sample(allWords)
+    const wordList = quizQuestionWords ? quizQuestionWords : allWords
+    const correctWord = getCorrectWord(wordList, prevQuizWord.current)
 
     if (!correctWord) return
+
+    prevQuizWord.current = correctWord.word
 
     newQuiz = quizCreateFn(correctWord, allWords)
 
     setQuiz(newQuiz)
-  }, [allWords, quizQuestionWords, quizCreateFn])
+  }, [allWords, quizQuestionWords, quizCreateFn, prevQuizWord])
 
   const handleNext = () => {
     startNewQuiz()
