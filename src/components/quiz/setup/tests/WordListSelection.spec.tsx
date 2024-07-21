@@ -18,12 +18,12 @@ describe('<WordListSelection/>', () => {
     fireEvent.click(screen.getByText('all'))
 
     const allWordsButton = screen.getByText('all').closest('button')
-    expect(allWordsButton).toHaveClass('border-green-200')
+    expect(allWordsButton).toHaveClass('border-green-300')
 
     fireEvent.click(screen.getByText('favorites'))
-    expect(allWordsButton).not.toHaveClass('border-green-200')
+    expect(allWordsButton).not.toHaveClass('border-green-300')
     const favoritesWordsButton = screen.getByText('favorites').closest('button')
-    expect(favoritesWordsButton).toHaveClass('border-green-200')
+    expect(favoritesWordsButton).toHaveClass('border-green-300')
   })
 
   it('disables favorites button if favorites list is not available', () => {
