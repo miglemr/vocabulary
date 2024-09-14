@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import FavoriteWords from '@/components/words/FavoriteWords'
+import WordCarousel from '@/components/words/WordCarousel'
 import Error from '@/components/Error'
 
 import { useFetchFavoriteWords } from '@/hooks/useFetchFavoriteWords'
@@ -33,6 +33,6 @@ function Favorites() {
     )
   }
 
-  return <FavoriteWords words={favoriteWords} />
+  return <WordCarousel words={favoriteWords} />
 }
 export default Favorites
