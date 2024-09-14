@@ -33,4 +33,20 @@ describe('<QuizQuestion/>', () => {
     })
     expect(screen.getByText('kaleidoscopic').closest('button')).toHaveClass('border-green-300')
   })
+
+  it('displays message "Correct!" if answer is correct', () => {
+    render(<QuizQuestion quiz={quiz} />)
+
+    fireEvent.click(screen.getByText('kaleidoscopic'))
+
+    expect(screen.getByText('Correct!')).toBeInTheDocument()
+  })
+
+  it('displays message "Incorrect" if answer is incorrect', () => {
+    render(<QuizQuestion quiz={quiz} />)
+
+    fireEvent.click(screen.getByText('obstreperous'))
+
+    expect(screen.getByText('Incorrect')).toBeInTheDocument()
+  })
 })
