@@ -5,9 +5,11 @@ import { type QuizType } from '@/lib/createQuiz'
 
 function QuizQuestion({ quiz }: { quiz: QuizType }) {
   const [answerSubmitted, setAnswerSubmitted] = useState(false)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
   useEffect(() => {
     setAnswerSubmitted(false)
+    setIsCorrect(null)
   }, [quiz])
 
   const getOptionButtonClasses = (option: string) => {
@@ -22,8 +24,25 @@ function QuizQuestion({ quiz }: { quiz: QuizType }) {
     })
   }
 
+  const handleAnswerClick = (option: string) => {
+    setAnswerSubmitted(true)
+
+    if (option === quiz.answer) {
+      setIsCorrect(true)
+    } else {
+      setIsCorrect(false)
+    }
+  }
+
   return (
     <div className="flex flex-col">
+      <div className="h-10 mb-5 flex items-center justify-center">
+        {isCorrect === null ? null : isCorrect ? (
+          <div className="bg-green-300/10 py-2 px-4 rounded-md text-green-900">Correct!</div>
+        ) : (
+          <div className="bg-red-300/10 py-2 px-4 rounded-md text-red-900">Incorrect</div>
+        )}
+      </div>
       <p aria-label="quiz-question" className="text-center font-semibold">
         {quiz.question}
       </p>
@@ -34,7 +53,7 @@ function QuizQuestion({ quiz }: { quiz: QuizType }) {
             key={index}
             className={getOptionButtonClasses(option)}
             value={option}
-            onClick={() => setAnswerSubmitted(true)}
+            onClick={() => handleAnswerClick(option)}
           >
             <div>
               <p>{option}</p>
