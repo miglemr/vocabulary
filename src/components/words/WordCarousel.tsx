@@ -33,7 +33,7 @@ function WordCarousel({
     >
       <div className="hidden sm:block">
         <button
-          aria-label="prev-button"
+          aria-label="Previous word"
           onClick={() => setIndex(prevIndex => getPrevIndex(prevIndex, words.length))}
         >
           <ArrowBackIosNewRoundedIcon color="disabled" />
@@ -42,7 +42,7 @@ function WordCarousel({
       <WordItem word={currentWord} />
       <div className="hidden sm:block">
         <button
-          aria-label="next-button"
+          aria-label="Next word"
           onClick={() => setIndex(prevIndex => getNextIndex(prevIndex, words.length))}
         >
           <ArrowForwardIosRoundedIcon color="disabled" />

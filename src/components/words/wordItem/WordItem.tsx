@@ -17,7 +17,7 @@ function WordItem({ word }: { word: Word }) {
   }
 
   return (
-    <section aria-label="word-section" className="space-y-12">
+    <section aria-label="Word details" className="space-y-12">
       <div className="max-w-sm h-96 space-y-20">
         <div className="flex flex-col items-center space-y-2">
           <h1 className="text-xl font-semibold">{word.word}</h1>

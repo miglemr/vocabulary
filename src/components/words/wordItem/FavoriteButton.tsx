@@ -9,7 +9,7 @@ function Favorite({
   toggleFavorite: () => void
 }) {
   return (
-    <button aria-label="favorite-button" onClick={toggleFavorite}>
+    <button aria-label="Add to favorites" onClick={toggleFavorite}>
       {isFavorite ? (
         <FavoriteRoundedIcon sx={{ color: '#E78895' }} />
       ) : (

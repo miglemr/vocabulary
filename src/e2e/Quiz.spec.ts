@@ -30,7 +30,7 @@ test.describe('quiz intro', () => {
   test('clicking back button navigates user to quiz page', async ({ page }) => {
     await page.goto('/quiz/definition')
 
-    await page.getByLabel('back-link').click()
+    await page.getByLabel('Go to previous page').click()
 
     await expect(page).toHaveURL('/quiz')
   })
@@ -57,7 +57,7 @@ test.describe('quiz word list selection', () => {
   test('clicking back button displays quiz intro', async ({ page }) => {
     await goToWordSelection(page)
 
-    await page.getByLabel('back-button').click()
+    await page.getByLabel('Go to previous page').click()
 
     await expect(page).toHaveURL('/quiz/definition')
   })
@@ -103,8 +103,8 @@ test.describe('quiz word list selection', () => {
     await page.getByRole('button', { name: 'all' }).click()
     await page.getByRole('button', { name: 'Start' }).click()
 
-    expect(page.getByLabel('quiz-question')).toBeVisible()
-    expect(await page.getByLabel('quiz-option').all()).toHaveLength(4)
+    expect(page.getByLabel('Quiz question')).toBeVisible()
+    expect(await page.getByLabel('Quiz option').all()).toHaveLength(4)
   })
 })
 
@@ -117,7 +117,7 @@ const addFiveFavoriteWords = async (page: Page, n: number) => {
   await page.goto('/')
 
   for (let i = 1; i <= n; i++) {
-    await page.getByLabel('favorite-button').click()
-    await page.getByLabel('next-button').click()
+    await page.getByLabel('Add to favorites').click()
+    await page.getByLabel('Next word').click()
   }
 }

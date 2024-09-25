@@ -24,7 +24,7 @@ function CustomSwipeableDrawer({
 
   return (
     <div>
-      <button aria-label="menu-button" onClick={() => setOpen(true)}>
+      <button aria-label="Menu" onClick={() => setOpen(true)}>
         <RoundedDiv>{icon}</RoundedDiv>
       </button>
 

@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { Word } from '@prisma/client'
 
-import QuizQuestion from './QuizQuestion'
+import QuizCard from './QuizCard'
 import Button from '@/components/Button'
 
 import { getCorrectWord, type QuizType } from '@/lib/createQuiz'
@@ -49,7 +49,7 @@ function QuizController({
   return (
     <div className="flex flex-col items-center">
       <main className="flex flex-col items-center space-y-12">
-        <QuizQuestion quiz={quiz} />
+        <QuizCard quiz={quiz} />
         <Button onClick={handleNext}>Next</Button>
       </main>
     </div>

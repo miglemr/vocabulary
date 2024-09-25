@@ -6,17 +6,16 @@ import { Word } from '@prisma/client'
 
 export type QuizType = {
   question: string
-  answer: string
-  options: string[]
+  answer: Word
+  options: Word[]
 }
 
 const getQuizOptions = (correctWord: Word, allWords: Word[], partOfSpeech: string) => {
   const filteredWords = allWords
     .filter(word => word.partOfSpeech === partOfSpeech)
     .filter(word => word.word !== correctWord.word)
-    .map(word => word.word)
 
-  return _.shuffle([correctWord.word, ..._.sampleSize(filteredWords, 3)])
+  return _.shuffle([correctWord, ..._.sampleSize(filteredWords, 3)])
 }
 
 export const getCorrectWord = (wordList: Word[], prevWord: string): Word | undefined => {
@@ -38,7 +37,7 @@ export const createDefinitionQuiz = (correctWord: Word, allWords: Word[]): QuizT
 
   return {
     question,
-    answer: correctWord.word,
+    answer: correctWord,
     options,
   }
 }
@@ -51,7 +50,7 @@ export const createSentenceQuiz = (correctWord: Word, allWords: Word[]): QuizTyp
 
   return {
     question,
-    answer: correctWord.word,
+    answer: correctWord,
     options,
   }
 }

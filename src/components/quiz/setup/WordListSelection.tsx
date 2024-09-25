@@ -24,7 +24,7 @@ function WordListSelection({
 
   return (
     <div>
-      <button aria-label="back-button" onClick={onCancel} className="mb-6">
+      <button aria-label="Go to previous page" onClick={onCancel} className="mb-6">
         <BackIcon />
       </button>
       <div className="flex flex-col items-center space-y-8">

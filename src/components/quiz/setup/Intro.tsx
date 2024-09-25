@@ -15,7 +15,7 @@ function Intro({
   return (
     <div>
       <div className="mb-6">
-        <Link aria-label="back-link" href="/quiz">
+        <Link aria-label="Go to previous page" href="/quiz">
           <BackIcon />
         </Link>
       </div>

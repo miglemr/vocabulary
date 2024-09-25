@@ -7,9 +7,9 @@ import { words } from '@/utils/tests/mockData'
 const quizQuestionWords = words.slice(4)
 
 const quizCreateFn = () => ({
-  question: 'wicked or criminal',
-  answer: 'nefarious',
-  options: ['garrulous', 'lachrymose', 'nefarious', 'deleterious'],
+  question: words[0].definition,
+  answer: words[0],
+  options: words.slice(0, 3),
 })
 
 describe('<QuizController/>', () => {
@@ -22,22 +22,22 @@ describe('<QuizController/>', () => {
       />,
     )
 
-    const quizQuestion = quizCreateFn()
+    const quiz = quizCreateFn()
 
-    expect(screen.getByText(quizQuestion.question)).toBeInTheDocument()
-    quizQuestion.options.forEach(option => {
-      expect(screen.getByText(option)).toBeInTheDocument()
+    expect(screen.getByText(quiz.question)).toBeInTheDocument()
+    quiz.options.forEach(option => {
+      expect(screen.getByText(option.word)).toBeInTheDocument()
     })
   })
 
   it('renders question and options if quizQuestionWords prop is not defined', () => {
     render(<QuizController allWords={words} quizCreateFn={quizCreateFn} />)
 
-    const quizQuestion = quizCreateFn()
+    const quiz = quizCreateFn()
 
-    expect(screen.getByText(quizQuestion.question)).toBeInTheDocument()
-    quizQuestion.options.forEach(option => {
-      expect(screen.getByText(option)).toBeInTheDocument()
+    expect(screen.getByText(quiz.question)).toBeInTheDocument()
+    quiz.options.forEach(option => {
+      expect(screen.getByText(option.word)).toBeInTheDocument()
     })
   })
 })
