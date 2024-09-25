@@ -21,13 +21,17 @@ function WordItem({ word }: { word: Word }) {
       <div className="max-w-sm h-96 space-y-20">
         <div className="flex flex-col items-center space-y-2">
           <h1 className="text-xl font-semibold">{word.word}</h1>
-          <p>{word.pronunciation}</p>
+          <p aria-label="Pronunciation">{word.pronunciation}</p>
         </div>
         <p className="text-center text-sm">
-          <span className="mr-2">({word.partOfSpeech})</span>
-          {word.definition}
+          <span aria-label="Part of speech" className="mr-2">
+            ({word.partOfSpeech})
+          </span>
+          <span aria-label="Definition">{word.definition}</span>
         </p>
-        <p className="text-center text-xs sm:text-sm">({word.example})</p>
+        <p aria-label="Example sentence" className="text-center text-xs sm:text-sm">
+          ({word.example})
+        </p>
       </div>
       <div className="flex w-full items-center justify-evenly">
         <AudioButton url={word.audio} />

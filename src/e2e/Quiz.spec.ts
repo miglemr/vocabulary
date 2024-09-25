@@ -96,7 +96,9 @@ test.describe('quiz word list selection', () => {
 
     await expect(page.getByRole('button', { name: 'Start' })).toBeDisabled()
   })
+})
 
+test.describe('quiz flow', () => {
   test('clicking the start button starts the quiz', async ({ page }) => {
     await goToWordSelection(page)
 
@@ -105,6 +107,17 @@ test.describe('quiz word list selection', () => {
 
     expect(page.getByLabel('Quiz question')).toBeVisible()
     expect(await page.getByLabel('Quiz option').all()).toHaveLength(4)
+  })
+
+  test('clicking on a word after answer submission displays a card with word details', async ({
+    page,
+  }) => {
+    await startQuiz(page)
+    await page.getByLabel('Quiz option').first().click()
+
+    await page.getByLabel('Word details').first().click()
+
+    await expect(page.getByLabel('Definition')).toBeVisible()
   })
 })
 
@@ -120,4 +133,11 @@ const addFiveFavoriteWords = async (page: Page, n: number) => {
     await page.getByLabel('Add to favorites').click()
     await page.getByLabel('Next word').click()
   }
+}
+
+const startQuiz = async (page: Page) => {
+  await goToWordSelection(page)
+
+  await page.getByRole('button', { name: 'all' }).click()
+  await page.getByRole('button', { name: 'Start' }).click()
 }
