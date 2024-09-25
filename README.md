@@ -16,6 +16,14 @@ Welcome to Vocabulary, your ultimate companion for mastering English words effor
 
 <div align="center"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2tuZmJjd2x5eG11aGdqeW40bmp5aWNqdHN1ZGdpa3huOGE4cDBtMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8jGHJ7IFhyqMaFr5g9/giphy.gif"/></div>
 
+<br>
+
+- **_NEW_ Word details**: After submitting an answer, users can click on any word to view its details, including pronunciation, definition, and example usage.
+
+<div align="center">
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXh3bGl5bWhkZmppdjNzMTg0bXV4Nm51enp0eXF1NHc0MjVpMXAwaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/50sUX7cVoP7K0wtXcR/giphy.gif"/>
+</div>
+
 ## Built With
 
 <code><img width="50" src="https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704" alt="Next.js" title="Next.js"/></code>
@@ -34,7 +42,7 @@ npm install
 
 - Add environment variables as in .env.example file
 
-- Setup Prisma database
+- Setup Sqlite database with Prisma
 
 ```bash
 npm run db:migrate
@@ -48,4 +56,20 @@ npm run dev
 # or
 npm run build
 npm run start
+```
+
+## Testing
+
+The project is configured with a GitHub workflow that automatically runs tests before pushing to the repository. To run tests manually, follow these steps:
+
+- Unit/Integration (Vitest)
+
+```bash
+npm run test
+```
+
+- E2E (Playwright)
+
+```bash
+npm run test:e2e
 ```
