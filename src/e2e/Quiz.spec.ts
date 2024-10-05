@@ -90,19 +90,24 @@ test.describe('quiz word list selection', () => {
     await expect(tooltip).toBeVisible()
     await expect(tooltip).toContainText('Need at least 5 words!')
   })
-
-  test('start button is disabled if nothing is selected', async ({ page }) => {
-    await goToWordSelection(page)
-
-    await expect(page.getByRole('button', { name: 'Start' })).toBeDisabled()
-  })
 })
 
 test.describe('quiz flow', () => {
+  test('clicking the next button navigates user to quiz start page', async ({ page }) => {
+    await goToWordSelection(page)
+
+    await page.getByRole('button', { name: 'all' }).click()
+    await page.getByRole('button', { name: 'Next' }).click()
+
+    await expect(page).toHaveURL('/quiz/definition/start')
+    await expect(page.getByRole('button', { name: 'Start' })).toBeVisible()
+  })
+
   test('clicking the start button starts the quiz', async ({ page }) => {
     await goToWordSelection(page)
 
     await page.getByRole('button', { name: 'all' }).click()
+    await page.getByRole('button', { name: 'Next' }).click()
     await page.getByRole('button', { name: 'Start' }).click()
 
     expect(page.getByLabel('Quiz question')).toBeVisible()
@@ -139,5 +144,6 @@ const startQuiz = async (page: Page) => {
   await goToWordSelection(page)
 
   await page.getByRole('button', { name: 'all' }).click()
+  await page.getByRole('button', { name: 'Next' }).click()
   await page.getByRole('button', { name: 'Start' }).click()
 }

@@ -3,16 +3,16 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import { forwardRef } from 'react'
 
-const WordSelectBox = forwardRef<
+const WordSelectionBox = forwardRef<
   HTMLDivElement,
-  { name: string; imgSrc: string; isDisabled: boolean; clicked: boolean }
->(({ name, imgSrc, isDisabled, clicked, ...rest }, ref) => {
+  { name: string; imgSrc: string; isDisabled: boolean; active: boolean }
+>(({ name, imgSrc, isDisabled, active, ...rest }, ref) => {
   const buttonClasses = classNames(
     'flex flex-col justify-evenly items-center w-full h-full border-4 rounded-md',
     {
       'bg-stone-200': isDisabled,
-      'border-green-300': !isDisabled && clicked,
-      'border-stone-200': !clicked,
+      'border-green-300': !isDisabled && active,
+      'border-stone-200': !active,
     },
   )
 
@@ -26,6 +26,6 @@ const WordSelectBox = forwardRef<
   )
 })
 
-WordSelectBox.displayName = 'WordSelectBox'
+WordSelectionBox.displayName = 'WordSelectBox'
 
-export default WordSelectBox
+export default WordSelectionBox

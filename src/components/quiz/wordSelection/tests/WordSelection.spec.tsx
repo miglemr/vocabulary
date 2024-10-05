@@ -2,18 +2,18 @@ import { describe, expect, it, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import WordListSelection from '../WordListSelection'
+import WordSelection from '../WordSelection'
 
-describe('<WordListSelection/>', () => {
+describe('<WordSelection/>', () => {
   it('renders word list options', () => {
-    render(<WordListSelection isFavoritesAvailable={true} onSelect={vi.fn()} onCancel={vi.fn()} />)
+    render(<WordSelection isFavoritesAvailable={true} onSelect={vi.fn()} />)
 
     expect(screen.getByText('favorites')).toBeInTheDocument()
     expect(screen.getByText('all')).toBeInTheDocument()
   })
 
   it('changes border color of selected box', () => {
-    render(<WordListSelection isFavoritesAvailable={true} onSelect={vi.fn()} onCancel={vi.fn()} />)
+    render(<WordSelection isFavoritesAvailable={true} onSelect={vi.fn()} />)
 
     fireEvent.click(screen.getByText('all'))
 
@@ -27,13 +27,13 @@ describe('<WordListSelection/>', () => {
   })
 
   it('disables favorites button if favorites list is not available', () => {
-    render(<WordListSelection isFavoritesAvailable={false} onSelect={vi.fn()} onCancel={vi.fn()} />)
+    render(<WordSelection isFavoritesAvailable={false} onSelect={vi.fn()} />)
 
     expect(screen.getByText('favorites').closest('button')).toBeDisabled()
   })
 
   it('shows a tooltip message if favorites list is not available', async () => {
-    render(<WordListSelection isFavoritesAvailable={false} onSelect={vi.fn()} onCancel={vi.fn()} />)
+    render(<WordSelection isFavoritesAvailable={false} onSelect={vi.fn()} />)
 
     await userEvent.hover(screen.getByText('favorites'))
 

@@ -1,17 +1,8 @@
 import Link from 'next/link'
 
-import Button from '@/components/Button'
 import BackIcon from '@/components/BackIcon'
 
-function Intro({
-  title,
-  description,
-  onNextClick,
-}: {
-  title: string
-  description: string
-  onNextClick: () => void
-}) {
+function Intro({ title, description }: { title: string; description: string }) {
   return (
     <div>
       <div className="mb-6">
@@ -24,7 +15,6 @@ function Intro({
           <h1 className="text-center font-semibold">{title}</h1>
           <p className="text-center text-sm">{description}</p>
         </header>
-        <Button onClick={onNextClick}>Next</Button>
       </div>
     </div>
   )

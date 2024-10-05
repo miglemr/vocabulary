@@ -4,51 +4,35 @@ import { useState } from 'react'
 
 import { Word } from '@prisma/client'
 
-import QuizController from './controller/QuizController'
-import QuizSetup from './setup/QuizSetup'
-import { type WordList } from './setup/WordListSelection'
+import QuizController from './quizController/QuizController'
+import Setup from './Setup'
 
-import { useWordStore } from '@/store/useWordStore'
 import { type QuizType } from '@/lib/createQuiz'
 
-export type QuizDetails = {
-  title: string
-  description: string
-  createFn: (correctWord: Word, allWords: Word[]) => QuizType
-}
-
-function Quiz({ words, quizDetails }: { words: Word[]; quizDetails: QuizDetails }) {
-  const [quizQuestionWords, setQuizQuestionWords] = useState<Word[]>()
+function Quiz({
+  words,
+  quizCreateFn,
+}: {
+  words: Word[]
+  quizCreateFn: (correctWord: Word, allWords: Word[]) => QuizType
+}) {
   const [isQuizStarted, setIsQuizStarted] = useState(false)
+  const [favoritesMode, setFavoritesMode] = useState(false)
 
-  const favoriteWordIds = useWordStore.use.favoriteIds()
-
-  const handleStart = (wordList: WordList) => {
-    if (wordList === 'favorites') {
-      const favoriteWords = words.filter(word => favoriteWordIds.includes(word.id))
-      setQuizQuestionWords(favoriteWords)
+  const handleNextClick = (favoritesMode: boolean) => {
+    if (favoritesMode) {
+      setFavoritesMode(true)
     }
     setIsQuizStarted(true)
   }
 
   if (isQuizStarted) {
     return (
-      <QuizController
-        allWords={words}
-        quizQuestionWords={quizQuestionWords && quizQuestionWords}
-        quizCreateFn={quizDetails.createFn}
-      />
+      <QuizController allWords={words} favoritesMode={favoritesMode} quizCreateFn={quizCreateFn} />
     )
   }
 
-  return (
-    <QuizSetup
-      title={quizDetails.title}
-      description={quizDetails.description}
-      onStart={handleStart}
-      isFavoritesAvailable={favoriteWordIds.length >= 5}
-    />
-  )
+  return <Setup onNextClick={handleNextClick} />
 }
 
 export default Quiz

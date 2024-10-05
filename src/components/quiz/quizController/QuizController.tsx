@@ -1,30 +1,40 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import _ from 'lodash'
 
 import { Word } from '@prisma/client'
 
 import QuizCard from './QuizCard'
+import StartButton from './StartButton'
 import Button from '@/components/Button'
 
 import { getCorrectWord, type QuizType } from '@/lib/createQuiz'
+import { useWordStore } from '@/store/useWordStore'
 
 function QuizController({
   allWords,
-  quizQuestionWords,
+  favoritesMode,
   quizCreateFn,
 }: {
   allWords: Word[]
-  quizQuestionWords?: Word[]
+  favoritesMode: boolean
   quizCreateFn: (correctWord: Word, allWords: Word[]) => QuizType
 }) {
   const [quiz, setQuiz] = useState<QuizType>()
+
+  const favoriteWordIds = useWordStore.use.favoriteIds()
 
   const prevQuizWord = useRef('')
 
   const startNewQuiz = useCallback(() => {
     let newQuiz
+    let wordList
 
-    const wordList = quizQuestionWords ? quizQuestionWords : allWords
+    if (favoritesMode) {
+      wordList = allWords.filter(word => favoriteWordIds.includes(word.id))
+    } else {
+      wordList = allWords
+    }
+
     const correctWord = getCorrectWord(wordList, prevQuizWord.current)
 
     if (!correctWord) return
@@ -34,23 +44,15 @@ function QuizController({
     newQuiz = quizCreateFn(correctWord, allWords)
 
     setQuiz(newQuiz)
-  }, [allWords, quizQuestionWords, quizCreateFn, prevQuizWord])
+  }, [allWords, quizCreateFn, prevQuizWord, favoritesMode, favoriteWordIds])
 
-  const handleNext = () => {
-    startNewQuiz()
-  }
-
-  useEffect(() => {
-    startNewQuiz()
-  }, [startNewQuiz])
-
-  if (!quiz) return <div></div>
+  if (!quiz) return <StartButton onStart={startNewQuiz} />
 
   return (
     <div className="flex flex-col items-center">
       <main className="flex flex-col items-center space-y-12">
         <QuizCard quiz={quiz} />
-        <Button onClick={handleNext}>Next</Button>
+        <Button onClick={startNewQuiz}>Next</Button>
       </main>
     </div>
   )
